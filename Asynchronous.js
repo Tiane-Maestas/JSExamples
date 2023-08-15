@@ -85,6 +85,7 @@ const axiosRequest = require("axios");
 
 /** ----- More Complicated Examples for Async Functions ----- */
 StartClient();
+
 async function StartClient() {
     console.log('Client Attempting Connection...') ;
     try {
@@ -107,11 +108,19 @@ async function LogMessages() {
 }
 
 async function CheckMessages() {
-    console.log("Starting Check...");
-    await delayEx1(1000);
-    console.log("Finished Check.");
-    let s = "aslkf";
-    CheckMessages();
+    // console.log("Starting Check...");
+    // await delayEx1(1000);
+    // console.log("Finished Check.");
+    // CheckMessages();
+
+    var stdin = process.openStdin();
+
+    stdin.addListener("data", function(d) {
+        // note:  d is an object, and when converted to a string it will
+        // end with a linefeed.  so we (rather crudely) account for that  
+        // with toString() and then trim() 
+        console.log("you entered: [" + d.toString().trim() + "]");
+    });
 }
 
 /** ----- Proof that recursive async functions don't run out of stack memory if using await. ----- */
