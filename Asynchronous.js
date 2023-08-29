@@ -1,11 +1,11 @@
 /** ----- My Examples for Promise Functions ----- */
 // 'resolve' and 'reject' are two callback functions
 function delayEx1(time) {
-    return new Promise(resolve => {setTimeout(resolve, time); });
+    return new Promise(resolve => { setTimeout(resolve, time); });
 }
 
 function delayEx2(time) {
-    return new Promise(function(resolve, reject) { // "(resolve, reject) => {" // This is equivalent syntactically.
+    return new Promise(function (resolve, reject) { // "(resolve, reject) => {" // This is equivalent syntactically.
         setTimeout(resolve, time);
         setTimeout(reject, time / 2); // The promise is rejected before it is resolved.
     });
@@ -20,7 +20,7 @@ async function isZero(x) {
 
         // Code that takes time should be here...
 
-        if(x == 0)
+        if (x == 0)
             resolve("Yes! 'x' is Zero.");
         else
             reject("No! 'x' is NOT Zero.");
@@ -87,7 +87,7 @@ const axiosRequest = require("axios");
 StartClient();
 
 async function StartClient() {
-    console.log('Client Attempting Connection...') ;
+    console.log('Client Attempting Connection...');
     try {
         let response = await delayEx1(1000);
         console.log(`Client Successfully Connected. ${response}`);
@@ -115,7 +115,7 @@ async function CheckMessages() {
 
     var stdin = process.openStdin();
 
-    stdin.addListener("data", function(d) {
+    stdin.addListener("data", function (d) {
         // note:  d is an object, and when converted to a string it will
         // end with a linefeed.  so we (rather crudely) account for that  
         // with toString() and then trim() 
@@ -131,7 +131,7 @@ async function CheckMessages() {
 //     let evenmoredata = " asdfasdfasdfa lkjs;dlkfj; alksdj;flkasj;dlkfj ;asjd;fija ;sijdf full stack!!!";
 //     let themostdata = "aojef;aowiejf;awoeijf;aweoifja;weoifja;weoifja;weoifja;weoifja;weoijf a;oiwsejfa;oiejf as;efij full stack!!!";
 //     i++;
-//     // await delayEx1(0); // KEY -> If you uncomment await then this recursion will go on forever. Else it stops after you run out of stack memory.
+//     // await delayEx1(0); // KEY -> If you uncomment this await then this recursion will go on forever. Else it stops after you run out of stack memory.
 //     console.log(i);
 //     recursive();
 //  }
